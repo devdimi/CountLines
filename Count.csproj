@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="devdimi.MinimalFileSystemApi" Version="1.0.0" />
+    <PackageReference Include="devdimi.MinimalFileSystemApi" Version="3.0.0.727" />
   </ItemGroup>
 
 </Project>

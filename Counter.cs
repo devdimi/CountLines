@@ -1,5 +1,4 @@
-﻿using MinimalFileSystemApi.Interfaces;
-using MinimalFileSystemApi;
+﻿using MinimalFileSystemApi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +9,41 @@ namespace Count
 {
     public class Counter
     {
-        public Counter()
-        {
+        private IDirectory directory;
 
+        public Counter(IDirectory directory)
+        {
+            this.directory = directory;
         }
 
-        public CountResult LineCount(String dir)
+        public CountResult GetLineCount(String dir,  ICollection<String> patterns)
         {
-            var r = new CountResult();
-            ILineReader reader = new LineReader()
+            var result = new CountResult();
+            foreach (var pattern in patterns)
+            {
+                var fileEnumerator = this.directory.GetFiles(dir, pattern);
+                foreach (ILineReader reader in fileEnumerator)
+                {
+                    using (reader)
+                    {
+                        this.ProcessFile(reader, result);
+                    }
+                }
+            }
+
+            return result;
         }
 
+        private void ProcessFile(ILineReader reader, CountResult result)
+        {
+            int count = 0;
+            String line;
+            while(null != (line = reader.ReadLine()))
+            {
+                count++;
+            }
+
+            result.LineCount += count;
+        }
     }
 }

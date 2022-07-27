@@ -1,4 +1,6 @@
-﻿namespace Count // Note: actual namespace depends on the project name.
+﻿using MinimalFileSystemApi;
+
+namespace Count // Note: actual namespace depends on the project name.
 {
     public class Program
     {
@@ -12,8 +14,16 @@
                 return 1;
             }
 
-            Console.WriteLine("Hello World!");
+            Counter counter = new Counter(new MinimalDirectory());
+            CountResult result =  counter.GetLineCount(options.DirectoryName, options.FilePatterns);
+            PrintResult(result, options);
             return 0;
+        }
+
+        private static void PrintResult(CountResult result, CommandLineOptions options)
+        {
+            Console.WriteLine("------------");
+            Console.WriteLine(result.LineCount);
         }
     }
 }

@@ -12,10 +12,14 @@ namespace Count
         /// <summary>Gets or sets the directory name</summary>
         public String DirectoryName { get; set; }
 
+        public ICollection<String> FilePatterns { get; set; }
+
         public static String GetUsage()
         {
             StringBuilder result = new StringBuilder();
-            result.AppendLine("Usage Count.exe <directory> [options]");
+            result.AppendLine("Usage Count.exe <directory> <filepattern1> [<filepattern2>] [options]");
+            result.AppendLine("Sample: Count.exe C:\\myproject *.cs *.js [options]");
+
             return result.ToString();
         }
     }
