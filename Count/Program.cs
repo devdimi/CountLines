@@ -16,7 +16,8 @@ namespace Count // Note: actual namespace depends on the project name.
 
             Counter counter = new Counter(new MinimalDirectory());
             CountResult result =  counter.GetLineCount(options.DirectoryName, options.FilePatterns);
-            PrintResult(result, options);
+            IResultPrinter printer = new ConsoleResultPrinter();
+            printer.PrintResult(result, options);
             return 0;
         }
 
