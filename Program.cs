@@ -23,7 +23,9 @@ namespace Count // Note: actual namespace depends on the project name.
         private static void PrintResult(CountResult result, CommandLineOptions options)
         {
             Console.WriteLine("------------");
-            Console.WriteLine(result.LineCount);
+            Console.WriteLine($"Dir: {options.DirectoryName}");
+            Console.WriteLine($"{DateTime.Now}");
+            Console.WriteLine($"Line Count: {result.LineCount}");
         }
     }
 }
