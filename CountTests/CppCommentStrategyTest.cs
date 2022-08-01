@@ -16,7 +16,7 @@ namespace CountTests
             CppCommentStrategy cppComment = new CppCommentStrategy();
             Assert.IsTrue(cppComment.IsComment("// futher line"));
             Assert.IsTrue(cppComment.IsComment("      // futher line"));
-            Assert.IsTrue(cppComment.IsComment("futher line"));
+            Assert.IsFalse(cppComment.IsComment("futher line"));
         }
     }
 }
