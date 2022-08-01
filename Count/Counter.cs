@@ -1,9 +1,4 @@
 ﻿using MinimalFileSystemApi;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Count
 {
@@ -26,7 +21,7 @@ namespace Count
                 {
                     using (reader)
                     {
-                        this.ProcessFile(reader, result);
+                        this.ProcessFile(reader, result, reader.FileName);
                     }
                 }
             }
@@ -34,7 +29,7 @@ namespace Count
             return result;
         }
 
-        private void ProcessFile(ILineReader reader, CountResult result)
+        private void ProcessFile(ILineReader reader, CountResult result, String fileName)
         {
             int count = 0;
             String line;
