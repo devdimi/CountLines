@@ -18,6 +18,8 @@ namespace Count
                 writer.PrintLine($" Search pattern :    {String.Join(',', options.FilePatterns)}");
                 writer.PrintLine($" Date           :    {DateTime.Now}");
                 writer.PrintLine($" Line count     :    {result.LineCount}");
+                writer.PrintLine($" Comment lines  :    {result.CommentCount}");
+                writer.PrintLine($" Grand total    :    {result.LineCount + result.CommentCount}");
             }
         }
     }

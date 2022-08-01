@@ -11,4 +11,8 @@
     <PackageReference Include="devdimi.MinimalFileSystemApi" Version="3.0.0.728" />
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="chcp 65001 > nul &amp;&amp; $(OutDir)\Count.exe $(ProjectDir) *.cs &gt; $(ProjectDir)\LineCount.txt &amp;&amp; chcp 1252" />
+  </Target>
+
 </Project>

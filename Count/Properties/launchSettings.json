@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Count": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\git\\CountLines *.cs"
+    }
+  }
+}

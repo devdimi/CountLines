@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Count
 {
-    public class CountResult
+    public class NullStrategy : ICommentStrategy
     {
-        public Int32 LineCount { get; set; }
-        public Int32 CommentCount { get; set; }
+        public bool IsComment(string comment) => false;
     }
 }

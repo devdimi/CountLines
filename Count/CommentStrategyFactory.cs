@@ -8,20 +8,34 @@ namespace Count
 {
     public class CommentStrategyFactory
     {
-        private ICommentStrategy commentStrategy;
+        private ICommentStrategy cppStrategy;
+        private ICommentStrategy nullStrategy;
 
         public ICommentStrategy CppStrategy 
         { 
             get
             {
-                if(this.commentStrategy == null)
+                if(this.cppStrategy == null)
                 {
-                    this.commentStrategy = new CppCommentStrategy();
+                    this.cppStrategy = new CppCommentStrategy();
                 }
 
-                return this.commentStrategy;
+                return this.cppStrategy;
             } 
          }
+
+        public ICommentStrategy NullStrategy
+        {
+            get
+            {
+                if (this.nullStrategy == null)
+                {
+                    this.nullStrategy = new NullStrategy();
+                }
+
+                return new NullStrategy();
+            }
+        }
 
         public ICommentStrategy GetStrategy(String fileName)
         {
@@ -30,7 +44,7 @@ namespace Count
                 return this.CppStrategy;
             }
 
-            throw new NotSupportedException();
+            return this.NullStrategy;
         }
     }
 }

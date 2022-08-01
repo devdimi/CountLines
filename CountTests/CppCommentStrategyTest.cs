@@ -17,6 +17,7 @@ namespace CountTests
             Assert.IsTrue(cppComment.IsComment("// futher line"));
             Assert.IsTrue(cppComment.IsComment("      // futher line"));
             Assert.IsFalse(cppComment.IsComment("futher line"));
+            Assert.IsTrue(cppComment.IsComment("            // LineSplitEnumerator is a struct so there is no allocation here"));
         }
     }
 }

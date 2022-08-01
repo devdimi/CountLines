@@ -6,9 +6,12 @@ namespace Count
     {
         private IDirectory directory;
 
-        public Counter(IDirectory directory)
+        private CommentStrategyFactory factory;
+        
+        public Counter(IDirectory directory, CommentStrategyFactory factory)
         {
             this.directory = directory;
+            this.factory = factory;
         }
 
         public CountResult GetLineCount(String dir,  ICollection<String> patterns)
@@ -32,13 +35,23 @@ namespace Count
         private void ProcessFile(ILineReader reader, CountResult result, String fileName)
         {
             int count = 0;
+            int commentLines = 0;
             String line;
+            ICommentStrategy commentStrategy = this.factory.GetStrategy(fileName);
             while(null != (line = reader.ReadLine()))
             {
-                count++;
+                if(!commentStrategy.IsComment(line))
+                {
+                    count++;
+                } else
+                {
+                    commentLines++;
+                }
+                
             }
 
             result.LineCount += count;
+            result.CommentCount += commentLines;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Count // Note: actual namespace depends on the project name.
                 return 1;
             }
 
-            Counter counter = new Counter(new MinimalDirectory());
+            Counter counter = new Counter(new MinimalDirectory(), new CommentStrategyFactory());
             CountResult result =  counter.GetLineCount(options.DirectoryName, options.FilePatterns);
             IResultPrinter printer = new ConsoleResultPrinter();
             printer.PrintResult(result, options);
