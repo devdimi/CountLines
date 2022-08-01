@@ -2,7 +2,11 @@
   "profiles": {
     "Count": {
       "commandName": "Project",
+<<<<<<< HEAD
       "commandLineArgs": "C:\\git\\TopCsv *.cs"
+=======
+      "commandLineArgs": "C:\\git\\CountLines *.cs"
+>>>>>>> 361940f (add debug settigs)
     }
   }
 }
