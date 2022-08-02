@@ -36,14 +36,23 @@ namespace Count
         {
             int count = 0;
             int commentLines = 0;
+            int emptyLines = 0;
             String line;
             ICommentStrategy commentStrategy = this.factory.GetStrategy(fileName);
             while(null != (line = reader.ReadLine()))
             {
+                String trimmedLine = line.Trim();
+                if (trimmedLine.Length == 0)
+                {
+                    emptyLines++;
+                    continue;
+                }
+
                 if(!commentStrategy.IsComment(line))
                 {
                     count++;
-                } else
+                } 
+                else
                 {
                     commentLines++;
                 }
@@ -52,6 +61,7 @@ namespace Count
 
             result.LineCount += count;
             result.CommentCount += commentLines;
+            result.EmptyLines += emptyLines;
         }
     }
 }

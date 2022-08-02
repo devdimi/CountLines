@@ -10,5 +10,7 @@ namespace Count
     {
         public Int32 LineCount { get; set; }
         public Int32 CommentCount { get; set; }
+
+        public Int32 EmptyLines { get; set; }
     }
 }

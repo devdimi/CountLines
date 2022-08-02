@@ -1,0 +1,12 @@
+﻿The goal of the project is to track lines of code.
+
+It is of course very important to note that more lines of code does not mean more features or better quality.
+Still it is interesting for developers to know and see how many lines of code they have written.
+
+This is a developer tool and it detects:
+-Empty Lines (needed for formatting)
+-Comment lines ( needed for clarification and also required by some tools)
+
+Further ideas:
+-save the lines of code in sqlite database
+-Provide web report ( or app ) with progress - how lines of code have changed during month/sprint
